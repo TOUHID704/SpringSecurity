@@ -1,6 +1,6 @@
 package com.touhid.securityApp.services;
 
-import com.touhid.securityApp.entities.LoginDto;
+import com.touhid.securityApp.dto.LoginDto;
 import com.touhid.securityApp.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

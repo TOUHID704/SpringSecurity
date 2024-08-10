@@ -1,13 +1,11 @@
 package com.touhid.securityApp.controllers;
 
-import com.sun.net.httpserver.HttpServer;
-import com.touhid.securityApp.entities.LoginDto;
-import com.touhid.securityApp.entities.SignUpDto;
-import com.touhid.securityApp.entities.UserDto;
+import com.touhid.securityApp.dto.LoginDto;
+import com.touhid.securityApp.dto.SignUpDto;
+import com.touhid.securityApp.dto.UserDto;
 import com.touhid.securityApp.services.AuthService;
 import com.touhid.securityApp.services.UserService;
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +20,7 @@ public class AuthController {
     private final UserService userService;
     private final AuthService authService;
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public String auth() {
         return "auth Page";
     }
@@ -32,7 +30,7 @@ public class AuthController {
         return ResponseEntity.ok(userService.signUp(signUpDto));
     }
 
-    @PostMapping(path = "/login")
+    @PostMapping(path = "/login",consumes = "application/json",produces = "application/json")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpServletRequest request, HttpServletResponse response){
         String token = authService.login(loginDto);
 

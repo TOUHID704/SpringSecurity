@@ -1,4 +1,4 @@
-package com.touhid.securityApp.entities;
+package com.touhid.securityApp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

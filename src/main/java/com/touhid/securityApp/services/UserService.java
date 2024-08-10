@@ -1,8 +1,8 @@
 package com.touhid.securityApp.services;
 
-import com.touhid.securityApp.entities.SignUpDto;
+import com.touhid.securityApp.dto.SignUpDto;
 import com.touhid.securityApp.entities.User;
-import com.touhid.securityApp.entities.UserDto;
+import com.touhid.securityApp.dto.UserDto;
 import com.touhid.securityApp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,7 +23,11 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("user with email is not found"));
+        return userRepository.findByEmail(username).orElseThrow(()-> new BadCredentialsException("user with email "+username+" is not found"));
+    }
+
+    public User getUserById(Long userId){
+        return userRepository.findById(userId).orElseThrow(()->new UsernameNotFoundException("userId is not found"));
     }
 
     public UserDto signUp(SignUpDto signUpDto) {

@@ -1,4 +1,4 @@
-package com.touhid.securityApp.entities;
+package com.touhid.securityApp.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginDto {
+public class UserDto {
 
+    private Long userId;
+    private String name;
     private String email;
     private String password;
-
 }
